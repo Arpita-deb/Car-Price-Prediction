@@ -79,3 +79,5 @@ The dataset contains 205 instances(rows) with 26 features of car models from 198
 * [What is horsepower and why does it matter?](https://www.carwow.co.uk/guides/glossary/what-is-horsepower)
 * [Why the Most Powerful Engines Have Short Strokes and Big Bores](https://www.roadandtrack.com/car-culture/a30443334/engine-stroke-vs-bore-explained/)
 * [What is a car’s compression ratio?](https://www.torque.com.sg/features/what-is-a-cars-compression-ratio/)
+* [Seaborn Scatterplot documentation](https://seaborn.pydata.org/generated/seaborn.scatterplot.html)
+* [The Four Assumptions of Linear Regression](https://www.statology.org/linear-regression-assumptions/)
