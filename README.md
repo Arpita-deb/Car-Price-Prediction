@@ -81,3 +81,4 @@ The dataset contains 205 instances(rows) with 26 features of car models from 198
 * [What is a car’s compression ratio?](https://www.torque.com.sg/features/what-is-a-cars-compression-ratio/)
 * [Seaborn Scatterplot documentation](https://seaborn.pydata.org/generated/seaborn.scatterplot.html)
 * [The Four Assumptions of Linear Regression](https://www.statology.org/linear-regression-assumptions/)
+* [Simple Linear Regression in Machine Learning](https://www.javatpoint.com/simple-linear-regression-in-machine-learning)
