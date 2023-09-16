@@ -43,9 +43,6 @@ RSS = Σ(yi – ŷi)2      where, yi = actual value and  ŷi = predicted value
 3. **Homoscedasticity**: The residuals have constant variance at every level of x.
 4. **Normality**: The residuals of the model are normally distributed.
 
-From the model output, the coefficients allow us to form an estimated simple linear regression model:
-**price** = - 8294.23 + 167.04 * **engine_size**
-
 ## 2. Multiple Linear Regression Model 
 
 Multiple Linear Regression is one of the important regression algorithms which models the linear relationship between a single dependent continuous variable and more than one independent variable.
@@ -63,10 +60,6 @@ where:
 The values for β0, β1, B2, … , βp are chosen using the least square method, which minimizes the sum of squared residuals (RSS).
 
 RSS = Σ(yi – ŷi)2
-
-From the model output, the coefficients allow us to form an estimated multiple linear regression model:
-
-**price** = -18583.60 + 54.34 * **length** + 19.05 * **width** + 5.89 * **curb_weight** - 1.67 * **engine_size** + 47.29 * **horsepower** + 3.21 * **highway_mpg**
 
 ## Assumptions of Multiple Linear Regression Model:
 
@@ -139,12 +132,21 @@ The initial data cleaning is done in Excel.
 * The dataset contain several missing values and outliers. In order to build the regression model, we've eliminated them.
 * Performed descriptive statistcis.
 * Plotted the distribution of the numerical variables in order to check whether they're normally distributed or not.
+
+  ![dist](https://github.com/Arpita-deb/Car-Price-Prediction/assets/139372731/96a2cbff-0de5-4330-8b32-7a45f7ccb56d)
+
 * Plotted countplot (bar charts) to see the distribution of categorical variables.
 * Plotted Heatmap and correlation matrix to find the correlation strength of the variables.
+
+  ![heatmap](https://github.com/Arpita-deb/Car-Price-Prediction/assets/139372731/07b10b97-4dfd-49a0-8da3-d6f25889484a)
+
 * Identified the dependent/response and independent/feature variables for the models.
   * For Simple Linear Regression Model: dependent/response variable : *price*, independent/feature variables : *engine size*
   * For Multiple Linear Regression Model: dependent/feature variable : *price*, independent/feature variables : *length, width, curb_weight, engine_size, horsepower, highway_mpg*                             
 * Plotted pairplot to check linearity and normality of the feature variables.
+
+![pairplot](https://github.com/Arpita-deb/Car-Price-Prediction/assets/139372731/9278219d-4980-4395-b9ba-3e19c9e6dc18)
+
 * Created two different datasets for simple and multiple linear models.
 
 # Model Construct:
@@ -158,25 +160,56 @@ The following steps are taken for both the models.
 4. Predicting the test result
 5. Testing the performance of the model by calculating evaluation matrices.
 
+## 1. Simple Linear Regression Model:
+
+The equation for best fit line for a simple linear regression model is expressed as - 
+**price** = - 8294.23 + 167.04 * **engine_size**
+
+It means one unit increase in engine size will increase 167.04 unit in price of a car. The regression line for the test data is shown here - 
+
+![reg line slr](https://github.com/Arpita-deb/Car-Price-Prediction/assets/139372731/276af15f-7b29-499b-aa6e-5e7079d75efb)
+
+The difference between the observed value of the dependent variable (yi) and the predicted value (ŷi) is called the residual and is denoted by e. The scatter-plot of these residuals is called residual plot.
+e = yi - ŷi
+If the data points in a residual plot are randomly dispersed around horizontal axis and an approximate zero residual mean, a linear regression model may be appropriate for the data. Otherwise a multiple or polynomial regression model might be a better fit. 
+
+This scatterplot gives us whether or not this model met the Homoscedasticity Assumption. If we take a look at the generated ‘Residual errors’ plot, we can clearly see that the train data plot pattern is non-random. Same is the case with the test data plot pattern. So, it suggests a better-fit for a non-linear model.
+
+![cloud slr](https://github.com/Arpita-deb/Car-Price-Prediction/assets/139372731/31321769-c3f9-4a96-a312-0c13e62221f1)
+
+And this histogram gives us whether or not this model met the Normality Assumption. Since the residuals are normally distributed, it has met the normality condition.
+
+![resid slr](https://github.com/Arpita-deb/Car-Price-Prediction/assets/139372731/c49279c3-8114-4425-a6bd-dd35a4b7a9a4)
+
+## 2. Multiple Linear Regression Model:
+
+The equation for best fit line for a Multiple linear regression model is expressed as - 
+
+**price** = -18583.60 + 54.34 * **length** + 19.05 * **width** + 5.89 * **curb_weight** - 1.67 * **engine_size** + 47.29 * **horsepower** + 3.21 * **highway_mpg**
+
+The scatterplot of residuals are more random than the simple linear regression model. There are no clear pattern in this chart. So we can say it met the Homoscedasticity condition.
+
+![cloud mlr](https://github.com/Arpita-deb/Car-Price-Prediction/assets/139372731/842e7eee-faaf-4faa-ad8b-ef84f64cbc46)
+
+The residuals are normally ditributed but there are some large values of residuals which mean that some of the model's predictions were quite off the mark.
+
+![resid mlr](https://github.com/Arpita-deb/Car-Price-Prediction/assets/139372731/78636957-c5fe-4587-921c-1342c92b78cf)
 
 # Execute:
 
 ## Evaluation Matrix:
 
-1. Beta Parameters: 
+1. **RMSE**: RMSE is the standard deviation of the residuals. So, RMSE gives us the standard deviation of the unexplained variance by the model. It can be calculated by taking square root of Mean Squared Error.
 
-1. **RMSE**: RMSE is the standard deviation of the residuals. So, RMSE gives us the standard deviation of the unexplained variance by the model. It can be calculated by taking square root of Mean Squared Error. RMSE is an absolute measure of fit. It gives us how spread the residuals are, given by the standard deviation of the residuals. The more concentrated the data is around the regression line, the lower the residuals and hence lower the standard deviation of residuals. It results in lower values of RMSE. So, lower values of RMSE indicate better fit of data.
+    RMSE is an absolute measure of fit. It gives us how spread the residuals are, given by the standard deviation of the residuals. The more concentrated the data is around the regression line, the lower the residuals and hence lower the standard deviation of residuals. It results in lower values of RMSE. So, lower values of RMSE indicate better fit of data.
 
 2. **R2 Score**: R2 Score is another metric to evaluate performance of a regression model. It is also called coefficient of determination. It gives us an idea of goodness of fit for the linear regression models. It indicates the percentage of variance that is explained by the model.
-This is often written as r2, and is also known as the coefficient of determination. It is the proportion of the variance in the response variable that can be explained by the predictor variable.
 
-The value for R-squared can range from 0 to 1. A value of 0 indicates that the response variable cannot be explained by the predictor variable at all. A value of 1 indicates that the response variable can be perfectly explained without error by the predictor variable.
+     The value for R-squared can range from 0 to 1. A value of 0 indicates that the response variable cannot be explained by the predictor variable at all. A value of 1 indicates that the response variable can be perfectly explained without error by the predictor variable.
 
-Mathematically,
+3. **Training set score**: It quantifies the number of correct predictions of the model on the training dataset. The higher the score the better the model performed on the training dataset.
 
-R2 Score = Explained Variation/Total Variation
-
-In general, the higher the R2 Score value, the better the model fits the data. Usually, its value ranges from 0 to 1. So, we want its value to be as close to 1. Its value can become negative if our model is wrong.
+4. **Test set score**: It quantifies the number of correct predictions of the model on the testing dataset. The higher the score the better the model performed on the testing dataset.
 
 ## Model Statistics: 
 
@@ -209,13 +242,8 @@ These models aren't perfect. There are certain limitations of these models.
 ## List of Reference:
 
 * [Automobile dataset](https://www.kaggle.com/datasets/fazilbtopal/auto85)
-* [Drive Wheels](https://gomechanic.in/blog/drivetrains-explained/)
-* [What is the difference between OHV, OHC, SOHC and DOHC engines?](https://www.samarins.com/glossary/dohc.html)
-* [Pros and Cons of Turbo engines](https://www.samarins.com/check/turbo-car.html)
-* [What is horsepower and why does it matter?](https://www.carwow.co.uk/guides/glossary/what-is-horsepower)
-* [Why the Most Powerful Engines Have Short Strokes and Big Bores](https://www.roadandtrack.com/car-culture/a30443334/engine-stroke-vs-bore-explained/)
-* [What is a car’s compression ratio?](https://www.torque.com.sg/features/what-is-a-cars-compression-ratio/)
+* [StatQuest - Linear Regression Clearly Explained](https://youtu.be/7ArmBVF2dCs?si=HEyYKuT4uqtXTbNh)
 * [Seaborn Scatterplot documentation](https://seaborn.pydata.org/generated/seaborn.scatterplot.html)
 * [The Four Assumptions of Linear Regression](https://www.statology.org/linear-regression-assumptions/)
-* [Introduction to Multiple Linear Regression](https://www.statology.org/multiple-linear-regression/)
 * [Simple Linear Regression in Machine Learning](https://www.javatpoint.com/simple-linear-regression-in-machine-learning)
+* [Introduction to Multiple Linear Regression](https://www.statology.org/multiple-linear-regression/)
